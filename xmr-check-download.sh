@@ -74,6 +74,9 @@ if [[ -n "$1" ]]; then
 				echo "SHA256 is OK:"
 				echo "$sha256_hash  is hash from hashes.txt"
 				echo "$real_sha_hash  is hash of $1"
+				# TODO:
+				# ask for UNTAR
+				tar xvf $1
 			else
 				echo "$(tput bold)$(tput setab 1) VERIFICATION FAILED! DO NOT CONTINUE! $(tput sgr0)"
 			fi
