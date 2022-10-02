@@ -73,9 +73,9 @@ if [[ -n "$1" ]]; then
 				echo -e "FILE $1  IS $(tput bold)$(tput setab 82)$(tput setaf 16) FINE ! $(tput sgr0)\n"
 				echo "SHA256 is OK:"
 				echo "$sha256_hash  is hash from hashes.txt"
-				echo "$real_sha_hash  is hash of $1"
-				# TODO:
-				# ask for UNTAR
+				echo "$real_sha_hash  is hash of $1 \n"
+				# TODO: ask for UNTAR
+				echo "Decompressing.."
 				tar xvf $1
 			else
 				echo "$(tput bold)$(tput setab 1) VERIFICATION FAILED! DO NOT CONTINUE! $(tput sgr0)"
