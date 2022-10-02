@@ -1,4 +1,3 @@
-# cat xmr-download-latest-cli.sh
 # stahne to spravne pojmenovany.. jeste by melo existovat --content-disposition
 # redirection needed so we can catch the output.. tee will save out to file 'name'
 # -nv
@@ -24,7 +23,8 @@ else
   exit
 fi
 
-echo "downloading binary $grep_name for $system_uri .. you can check wget.log"
+# better info pls
+echo "[i] Downloading binary $grep_name for $system_uri .. you can check wget.log"
 wget --trust-server-names $system_uri -o wget.log
 # alternative: curl --remote-header-name --remote-name
 
