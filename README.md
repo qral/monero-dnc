@@ -1,4 +1,4 @@
-# Monero DOWNLOAD and CHECK
+# Monero DOWNLOAD aNd CHECK
 
 Simle shell scripts to download and check (VERIFY) new monero binaries..
 
