@@ -1,3 +1,10 @@
+#!/usr/bin/env bash
+
+# quick fix for relative paths
+# not safu with $0
+#scriptdir="$(dirname "$0")"
+#cd "$scriptdir"
+
 # stahne to spravne pojmenovany.. jeste by melo existovat --content-disposition
 # redirection needed so we can catch the output.. tee will save out to file 'name'
 # -nv
@@ -5,8 +12,10 @@
 #wget --trust-server-names https://downloads.getmonero.org/cli/linux64 2>&1 | tee name
 
 
-# TODO: it could run ./monerod --version to check actual version first
-
+# TODO: 
+# - it could run ./monerod --version to check actual version first
+# - get latest filename from HTTP response and check if this file is downloaded OR ask to download 
+#  wget --server-response --spider  https://downloads.getmonero.org/cli/linux64
 
 # mac/linux?
 # TODO: WIN
