@@ -70,10 +70,12 @@ if [[ -n "$1" ]]; then
 			real_sha_hash=$( (shasum -a 256 "$1" || sha256sum "$1") | cut -d' ' -f1)
 			if [[ $sha256_hash == $real_sha_hash ]]; then
 				echo
-				echo -e "FILE $1  IS $(tput bold)$(tput setab 82)$(tput setaf 16) FINE ! $(tput sgr0)\n"
+				echo -e "FILE $1  IS $(tput bold)$(tput setab 82)$(tput setaf 16) FINE ! $(tput sgr0)"
+				echo
 				echo "SHA256 is OK:"
 				echo "$sha256_hash  is hash from hashes.txt"
-				echo "$real_sha_hash  is hash of $1 \n"
+				echo "$real_sha_hash  is hash of $1"
+				echo
 				# TODO: ask for UNTAR
 				echo "Decompressing.."
 				tar xvf $1
