@@ -25,6 +25,7 @@ then
 	command -v wget >/dev/null 2>&1 || { echo >&2 "wget/curl is required but it's not installed.  Aborting."; exit 1; }
 fi
 command -v shasum >/dev/null 2>&1 || { echo >&2 "shasum is required but it's not installed.  Aborting."; exit 1; }
+command -v bunzip2 >/dev/null 2>&1 || { echo >&2 "BZIP2 is required but it's not installed.  Aborting."; exit 1; }
 
 # cleanup from last run
 rm hashes.txt wget.log 2>/dev/null
