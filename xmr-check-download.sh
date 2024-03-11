@@ -85,7 +85,9 @@ if [[ -n "$1" ]]; then
 					echo "[i] Extracting file.."
 				  tar xvf $1
 				fi
-				# zavrhl jsem protoze bych musel zjistit filename PO rozbaleni
+				# need to know/find real file/DIRname AFTER untar
+				# monero-linux-x64-v0.18.3.2.tar.bz2 is decompressed to -> monero-x86_64-linux-gnu-v0.18.3.2
+				# that +1 step
 				# if [[ -d "$1" ]]; then
 				# 	echo "File was already decompressed.."
 				# else
@@ -113,3 +115,11 @@ fi
 # TODO 4: replace TPUT with escapes seq (got "tput: unknown terminal "xterm-kitty")
 # TODO 5: ask for decompression or check if it is already decompressed...
 # TODO 6: sh compatible? remove [[]] and use single []?
+# TODO 7: better HASH check? 
+# 
+# $ shasum -a 256 monero-linux-x64-v0.18.3.2.tar.bz2 | shasum -a 256 -c
+# monero-linux-x64-v0.18.3.2.tar.bz2: OK
+# $ echo $?
+# 0
+# 
+# TODO 8: 
