@@ -77,9 +77,21 @@ if [[ -n "$1" ]]; then
 				echo "$sha256_hash  is hash from hashes.txt"
 				echo "$real_sha_hash  is hash of $1"
 				echo
-				# TODO: ask for UNTAR
-				echo "Decompressing.."
-				tar xvf $1
+				# EXTRACTING, ask user
+				read -p "Extract the downloaded file? [y/Y]: " -n 1 -r
+				echo
+				if [[ $REPLY =~ ^[Yy]$ ]]
+				then
+					echo "[i] Extracting file.."
+				  tar xvf $1
+				fi
+				# zavrhl jsem protoze bych musel zjistit filename PO rozbaleni
+				# if [[ -d "$1" ]]; then
+				# 	echo "File was already decompressed.."
+				# else
+				# 	echo "Decompressing.."
+				# 	tar xvf $1
+				# fi
 			else
 				echo "$(tput bold)$(tput setab 1) VERIFICATION FAILED! DO NOT CONTINUE! $(tput sgr0)"
 			fi
@@ -95,14 +107,9 @@ fi
 # TODO 1: check for available commands (curl/wget, shasum etc) and then use the available command per platform
 # example what happened when run on debian armv7 linux-deploy (htc desire z):
 
-# ./monero-check-download.sh: line 40: shasum: command not found
-# FILE monero-linux-armv7-v0.10.2.1.tar.bz2  IS  FINE !
-# SHA256 is OK:
-# ad6bccc0b738e5becc0191fea2c55529835df042919ef8df60033f8e84c28a9d  is hash from hashes.txt
-# ad6bccc0b738e5becc0191fea2c55529835df042919ef8df60033f8e84c28a9d  is hash of monero-linux-armv7-v0.10.2.1.tar.bz2
-# android@localhost:~$ (shasum -a 256 monero-linux-armv7-v0.10.2.1.tar.bz2 || sha256sum monero-linux-armv7-v0.10.2.1.tar.bz2) | cut -d' ' -f1
-# -bash: shasum: command not found
-# ad6bccc0b738e5becc0191fea2c55529835df042919ef8df60033f8e84c28a9d
 
 # TODO 2: use functions
 # TODO 3: more colors: eg: <green>[i]</green> hashes.txt from https://getmonero.org/downloads/hashes.txt downloaded. 
+# TODO 4: replace TPUT with escapes seq (got "tput: unknown terminal "xterm-kitty")
+# TODO 5: ask for decompression or check if it is already decompressed...
+# TODO 6: sh compatible? remove [[]] and use single []?
