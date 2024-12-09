@@ -87,8 +87,11 @@ if [[ -n "$1" ]]; then
 				echo
 				if [[ $REPLY =~ ^[Yy]$ ]]
 				then
-					echo "[i] Extracting file.."
+				  echo "[i] Extracting file.."
 				  tar xvf $1
+				else
+				  echo "Exiting..bye"
+				  exit
 				fi
 				# need to know/find real file/DIRname AFTER untar
 				# monero-linux-x64-v0.18.3.2.tar.bz2 is decompressed to -> monero-x86_64-linux-gnu-v0.18.3.2

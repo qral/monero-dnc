@@ -18,10 +18,28 @@
 #  wget --server-response --spider  https://downloads.getmonero.org/cli/linux64
 
 # mac/linux?
-# TODO: WIN
+# TODO: WIN/Android and archs...
+# 
+# x64 linux
+# # uname -m
+# x86_64
+# 
+# android armv8
+# $ uname -m
+# aarch64
+# 
+# macos x64 "uname -m"  -> x86_64
+
+#
+# monero-android-armv7-v0.18.3.2.tar.bz2
+# monero-android-armv8-v0.18.3.2.tar.bz2
+
 # use CASE ?
 system=`uname`
-if [[ "$system" == "Darwin" ]]; then
+if [[ `uname -m` == "aarch64" ]]; then # must be 1st coz Android is also Linux
+  system_uri="https://downloads.getmonero.org/cli/androidarm8"
+  grep_name="monero-android-armv8.*bz2$"
+elif [[ "$system" == "Darwin" ]]; then
   system_uri="https://downloads.getmonero.org/cli/mac64"
   grep_name="monero-mac-x64.*bz2$"
 elif [[ "$system" == "Linux" ]]; then
