@@ -26,6 +26,7 @@ then
 fi
 command -v shasum >/dev/null 2>&1 || { echo >&2 "shasum is required but it's not installed.  Aborting."; exit 1; }
 command -v bunzip2 >/dev/null 2>&1 || { echo >&2 "BZIP2 is required but it's not installed.  Aborting."; exit 1; }
+command -v gpg >/dev/null 2>&1 || { echo >&2 "GPG is required but it's not installed.  Aborting."; exit 1; }
 
 # cleanup from last run
 rm hashes.txt wget.log 2>/dev/null
@@ -78,7 +79,11 @@ if [[ -n "$1" ]]; then
 				echo "$real_sha_hash  is hash of $1"
 				echo
 				# EXTRACTING, ask user
-				read -p "Extract the downloaded file? [y/Y]: " -n 1 -r
+				# [-n nchars] [-p prompt]
+				#  -r	do not allow backslashes to escape any characters
+				# http://linuxcommand.org/lc3_man_pages/readh.html 
+				# https://ss64.com/bash/read.html
+				read -p "Extract the downloaded file? [Y/y/n]: " -n 1 -r
 				echo
 				if [[ $REPLY =~ ^[Yy]$ ]]
 				then
@@ -122,4 +127,4 @@ fi
 # $ echo $?
 # 0
 # 
-# TODO 8: 
+# TODO 8: on android termux is only GPGV which needs keyring with keys
