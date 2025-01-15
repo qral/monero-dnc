@@ -25,6 +25,7 @@ then
 	command -v wget >/dev/null 2>&1 || { echo >&2 "wget/curl is required but it's not installed.  Aborting."; exit 1; }
 fi
 command -v shasum >/dev/null 2>&1 || { echo >&2 "shasum is required but it's not installed.  Aborting."; exit 1; }
+# for unzip it should be bunzip2, bzip2 -d works also
 command -v bunzip2 >/dev/null 2>&1 || { echo >&2 "BZIP2 is required but it's not installed.  Aborting."; exit 1; }
 command -v gpg >/dev/null 2>&1 || { echo >&2 "GPG is required but it's not installed.  Aborting."; exit 1; }
 
@@ -84,6 +85,8 @@ if [[ -n "$1" ]]; then
 				# http://linuxcommand.org/lc3_man_pages/readh.html 
 				# https://ss64.com/bash/read.html
 				read -p "Extract the downloaded file? [Y/y/n]: " -n 1 -r
+				# if REPLY is unset or null (it is after pressing ENTER), then replace it with 'Y'
+				REPLY=${REPLY:-Y}
 				echo
 				if [[ $REPLY =~ ^[Yy]$ ]]
 				then
