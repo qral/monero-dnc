@@ -5,15 +5,16 @@
 # https://web.getmonero.org/resources/user-guides/verification-allos-advanced.html#32-verify-hash-file
 
 # vars
-
 basename_file=`basename "$1"`
 hashes_url='https://getmonero.org/downloads/hashes.txt'
+
 # signature can be made by other ppl then fluffypony
 # https://github.com/monero-project/monero/tree/master/utils/gpg_keys/
 # fluffy wants to step down from King of monero devs so binaryfate is it now
 # leaving variable names with fluffy as a memory :)
 #gpg_fluffy_url='https://raw.githubusercontent.com/monero-project/monero/master/utils/gpg_keys/fluffypony.asc'
 gpg_fluffy_url='https://raw.githubusercontent.com/monero-project/monero/master/utils/gpg_keys/binaryfate.asc'
+
 #fluffypony.asc
 gpg_fluffy_filename=${gpg_fluffy_url##*/}
 
@@ -73,7 +74,7 @@ if [[ -n "$1" ]]; then
 			real_sha_hash=$( (shasum -a 256 "$1" || sha256sum "$1") | cut -d' ' -f1)
 			if [[ $sha256_hash == $real_sha_hash ]]; then
 				echo
-				echo -e "FILE $1  IS $(tput bold)$(tput setab 82)$(tput setaf 16) FINE ! $(tput sgr0)"
+				echo -e "FILE  $1  IS $(tput bold)$(tput setab 82)$(tput setaf 16) FINE ! $(tput sgr0)"
 				echo
 				echo "SHA256 is OK:"
 				echo "$sha256_hash  is hash from hashes.txt"
@@ -123,7 +124,9 @@ fi
 
 # TODO 2: use functions
 # TODO 3: more colors: eg: <green>[i]</green> hashes.txt from https://getmonero.org/downloads/hashes.txt downloaded. 
-# TODO 4: replace TPUT with escapes seq (got "tput: unknown terminal "xterm-kitty")
+# TODO 4: replace TPUT with escapes seq (got "tput: unknown terminal "xterm-kitty"  or tput: command not found)
+#         https://github.com/ryukinix/dotfiles/issues/5 
+#         tput needs ncurses-utils pkg
 # TODO 5: ask for decompression or check if it is already decompressed...
 # TODO 6: sh compatible? remove [[]] and use single []?
 # TODO 7: better HASH check? 

@@ -1,1 +1,23 @@
-todo
+IT SHOULD WORK WITH PATHS!
+
+$ ./monero-dnc/xmr-check-download.sh ../monero-linux-x64-v0.18.3.4.tar.bz2
+Downloading hashes.txt
+hashes.txt from https://getmonero.org/downloads/hashes.txt downloaded.
+gpg: directory '/home/ad/.gnupg' created
+gpg: keybox '/home/ad/.gnupg/pubring.kbx' created
+gpg: /home/ad/.gnupg/trustdb.gpg: trustdb created
+Downloading Binaryfate's GPG key..
+Importing Binaryfate's GPG key..
+
+gpg: key F0AF4D462A0BDF92: 2 signatures not checked due to missing keys
+gpg: key F0AF4D462A0BDF92: public key "binaryFate <binaryfate@getmonero.org>" imported
+gpg: Total number processed: 1
+gpg:               imported: 1
+gpg: no ultimately trusted keys found
+Binaryfate's GPG key was imported.
+
+ Verifying hashes.txt...
+
+shasum: ../monero-linux-x64-v0.18.3.4.tar.bz2: No such file or directory
+sha256sum: ../monero-linux-x64-v0.18.3.4.tar.bz2: No such file or directory
+ VERIFICATION FAILED! DO NOT CONTINUE!
