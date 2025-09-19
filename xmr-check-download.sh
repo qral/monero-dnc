@@ -61,7 +61,8 @@ if [[ -n "$1" ]]; then
  		fi
 		# gpg prints to STDERR hence the redirection
 		echo -e "\n Verifying hashes.txt... \n"
-		RESULT=$(gpg --verify hashes.txt 2>&1)
+		# LC_ALL=C or LANG=C because I need ENGLISH output, not localised
+		RESULT=$(LC_ALL=C gpg --verify hashes.txt 2>&1)
 		if [[ "$RESULT" =~ "Good signature from" ]]; then
 			#`grep  "$1" hashes.txt | cut -d" " -f1`
 			# sha256_hash=$(grep "$basename_file" hashes.txt)
@@ -93,6 +94,13 @@ if [[ -n "$1" ]]; then
 				then
 				  echo "[i] Extracting file.."
 				  tar xvf $1
+				  # delete the archive?
+				  if [[ "$?" -eq 0 ]]
+				  then
+				    echo
+				  	echo "[i] lets delete the downloaded archive, confirm with [yY]"
+				    rm -iv $1
+				  fi
 				else
 				  echo "Exiting..bye"
 				  exit
